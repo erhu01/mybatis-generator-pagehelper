@@ -1,0 +1,41 @@
+#设置此环境的端口
+server:
+  port: 8502
+spring:
+  #数据源
+  datasource:
+    #驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://115.29.150.104:3306/java?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: root
+    password: 123456
+    #阿里巴巴连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 10
+      max-active: 10
+      max-wait: 30000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      filters: stat,wall
+      connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: admin
+        login-password: 123456
+        enabled: true
+mybatis:
+  #配置文件位置
+  mapper-locations: classpath:mybatis/mapper/*Mapper.xml
+  #实体类位置
+  type-aliases-package: com.example.generator.entity

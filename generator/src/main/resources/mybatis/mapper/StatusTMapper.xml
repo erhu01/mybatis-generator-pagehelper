@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.generator.mapper.StatusTMapper" >
+  <resultMap id="BaseResultMap" type="com.example.generator.entity.StatusT" >
+    <result column="REVISION" property="revision" jdbcType="INTEGER" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+    <result column="CREATED_TIME" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="UPDATED_TIME" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="ID" property="id" jdbcType="BIGINT" />
+    <result column="姓名" property="姓名" jdbcType="VARCHAR" />
+    <result column="年龄" property="年龄" jdbcType="INTEGER" />
+    <result column="性别" property="性别" jdbcType="INTEGER" />
+    <result column="地址" property="地址" jdbcType="VARCHAR" />
+    <result column="班级id" property="班级id" jdbcType="BIGINT" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.generator.entity.StatusT" >
+    insert into STATUS_T (REVISION, CREATED_BY, CREATED_TIME, 
+      UPDATED_BY, UPDATED_TIME, ID, 
+      姓名, 年龄, 性别, 地址, 
+      班级id)
+    values (#{revision,jdbcType=INTEGER}, #{createdBy,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}, #{id,jdbcType=BIGINT}, 
+      #{姓名,jdbcType=VARCHAR}, #{年龄,jdbcType=INTEGER}, #{性别,jdbcType=INTEGER}, #{地址,jdbcType=VARCHAR}, 
+      #{班级id,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.generator.entity.StatusT" >
+    insert into STATUS_T
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="revision != null" >
+        REVISION,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdTime != null" >
+        CREATED_TIME,
+      </if>
+      <if test="updatedBy != null" >
+        UPDATED_BY,
+      </if>
+      <if test="updatedTime != null" >
+        UPDATED_TIME,
+      </if>
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="姓名 != null" >
+        姓名,
+      </if>
+      <if test="年龄 != null" >
+        年龄,
+      </if>
+      <if test="性别 != null" >
+        性别,
+      </if>
+      <if test="地址 != null" >
+        地址,
+      </if>
+      <if test="班级id != null" >
+        班级id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="revision != null" >
+        #{revision,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="姓名 != null" >
+        #{姓名,jdbcType=VARCHAR},
+      </if>
+      <if test="年龄 != null" >
+        #{年龄,jdbcType=INTEGER},
+      </if>
+      <if test="性别 != null" >
+        #{性别,jdbcType=INTEGER},
+      </if>
+      <if test="地址 != null" >
+        #{地址,jdbcType=VARCHAR},
+      </if>
+      <if test="班级id != null" >
+        #{班级id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectAll" resultType="com.example.generator.entity.StatusT">
+        select * from STATUS_T
+  </select>
+</mapper>
